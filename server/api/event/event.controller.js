@@ -24,7 +24,7 @@ exports.index = function (req, res) {
 
 // Get a single event
 exports.show = function (req, res) {
-    Thing.findById(req.params.id, function (err, event) {
+    Event.findById(req.params.id, function (err, event) {
         if (err) {
             return handleError(res, err);
         }
@@ -37,7 +37,7 @@ exports.show = function (req, res) {
 
 // Creates a new event in the DB.
 exports.create = function (req, res) {
-    Thing.create(req.body, function (err, event) {
+    Event.create(req.body, function (err, event) {
         if (err) {
             return handleError(res, err);
         }
@@ -50,7 +50,7 @@ exports.update = function (req, res) {
     if (req.body._id) {
         delete req.body._id;
     }
-    Thing.findById(req.params.id, function (err, event) {
+    Event.findById(req.params.id, function (err, event) {
         if (err) {
             return handleError(res, err);
         }
@@ -69,7 +69,7 @@ exports.update = function (req, res) {
 
 // Deletes a event from the DB.
 exports.destroy = function (req, res) {
-    Thing.findById(req.params.id, function (err, event) {
+    Event.findById(req.params.id, function (err, event) {
         if (err) {
             return handleError(res, err);
         }
