@@ -5,6 +5,9 @@ angular.module('tviundApp')
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
+    },{
+        'title': 'Events',
+        'link': '/events'
     }];
 
     $scope.isCollapsed = true;
