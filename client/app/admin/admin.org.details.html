@@ -1,0 +1,24 @@
+<div>
+  <h2>{{org.name}}</h2>
+
+  <div class="row">
+    <div class="col-xs-6">
+      <ul>
+        <li ng-repeat="group in org.groups">
+          {{ group.name }}
+        </li>
+      </ul>
+      <form ng-submit="createGroup(groupCreate)" name="groupCreateForm">
+        <div class="form-group">
+          <label for="name" class="col-sm-12 control-label">Name</label>
+
+          <div class="col-sm-6">
+            <input type="text" name="name" id="name" class="form-control" ng-model="groupCreate.name"
+                   required="required">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+      </form>
+    </div>
+  </div>
+</div>

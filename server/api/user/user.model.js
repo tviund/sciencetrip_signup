@@ -12,6 +12,8 @@ var UserSchema = new Schema({
         type: String,
         default: 'user'
     },
+    orgs: [{type: Schema.Types.ObjectId, ref: 'Org'}],
+    groups: [{type: Schema.Types.ObjectId, ref: 'groups'}],
     hashedPassword: String,
     provider: String,
     salt: String,
