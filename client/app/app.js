@@ -7,7 +7,8 @@ angular.module('tviundApp', [
     'btford.socket-io',
     'ui.router',
     'ui.bootstrap',
-    'ui.select'
+    'ui.select',
+    'timer'
 ])
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider,uiSelectConfig) {
         $urlRouterProvider

@@ -8,9 +8,14 @@ angular.module('tviundApp')
         templateUrl: 'app/events/events.html',
         controller: 'EventsCtrl'
       })
-        .state('create', {
-            url: '/events/create',
-            templateUrl: 'app/events/events.create.html',
-            controller: 'EventsCreateCtrl'
-        });
+      .state('create', {
+        url: '/events/create',
+        templateUrl: 'app/events/events.create.html',
+        controller: 'EventsCreateCtrl'
+      })
+      .state('events-details', {
+        url: '/events/:id',
+        templateUrl: 'app/events/events.details.html',
+        controller: 'EventsDetailsCtrl'
+      })
   });

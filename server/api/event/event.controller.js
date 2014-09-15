@@ -24,14 +24,14 @@ exports.index = function (req, res) {
 
 // Get a single event
 exports.show = function (req, res) {
-    Event.findById(req.params.id, function (err, event) {
-        if (err) {
-            return handleError(res, err);
-        }
-        if (!event) {
-            return res.send(404);
-        }
-        return res.json(event);
+    Event.findById(req.params.id).populate('attending').exec(function (err, event) {
+      if (err) {
+        return handleError(res, err);
+      }
+      if (!event) {
+        return res.send(404);
+      }
+      return res.json(event);
     });
 };
 
@@ -83,6 +83,31 @@ exports.destroy = function (req, res) {
             return res.send(204);
         });
     });
+};
+
+
+exports.createAttendee = function (req, res) {
+  Event.findById(req.params.id, function (err, event) {
+    if (err) {
+      return handleError(res, err);
+    }
+    if (!event) {
+      return res.send(404);
+    }
+
+    if(event.attending.length < event.limit){
+        event.attending.push(req.user.id);
+    }
+    else {
+      event.queue.push(req.user.id);
+    }
+
+    event.save(function(err){
+      if(err) return handleError(res, err);
+      return res.json(event);
+    })
+
+  });
 };
 
 function handleError(res, err) {

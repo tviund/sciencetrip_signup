@@ -2,6 +2,7 @@
 
 var _ = require('lodash');
 var Group = require('./group.model');
+var Org = require('./../org/org.model');
 
 // Get list of groups
 exports.index = function(req, res) {
@@ -47,9 +48,18 @@ exports.destroy = function(req, res) {
   Group.findById(req.params.id, function (err, group) {
     if(err) { return handleError(res, err); }
     if(!group) { return res.send(404); }
-    group.remove(function(err) {
+
+    Org.findOne([{groups: group._id}], function(err, org){
       if(err) { return handleError(res, err); }
-      return res.send(204);
+      var index = _.indexOf(org.groups, group._id);
+
+      org.groups.splice(index,1);
+      org.save(function(){
+        group.remove(function(err) {
+          if(err) { return handleError(res, err); }
+          return res.send(204);
+        });
+      });
     });
   });
 };

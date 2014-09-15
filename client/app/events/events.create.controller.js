@@ -1,29 +1,10 @@
 'use strict';
 
 angular.module('tviundApp')
-  .controller('EventsCreateCtrl', function ($scope) {
-    $scope.message = 'Hello';
+  .controller('EventsCreateCtrl', function ($scope, $http) {
 
-    $scope.today = function() {
-      $scope.dt = new Date();
-    };
-    $scope.today();
-
-    $scope.clear = function () {
-      $scope.dt = null;
-    };
-
-    // Disable weekend selection
-    $scope.disabled = function(date, mode) {
-      return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
-    };
-
-    $scope.toggleMin = function() {
-      $scope.minDate = $scope.minDate ? null : new Date();
-    };
-    $scope.toggleMin();
-
-    $scope.open = function($event) {
+    $scope.model = {};
+    $scope.open = function ($event) {
       $event.preventDefault();
       $event.stopPropagation();
 
@@ -35,8 +16,23 @@ angular.module('tviundApp')
       startingDay: 1
     };
 
-    $scope.initDate = new Date('2016-15-20');
-    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-    $scope.format = $scope.formats[0];
+    $scope.initDate = new Date();
+    $scope.format = 'dd/MM/yyyy';
+
+    $scope.$watch('time', function (val) {
+      console.log(val);
+    });
+
+    $scope.createEvent = function (form) {
+      if(!$scope.time){
+        $scope.time = new Date();
+      }
+      form.startEventDate = new Date($scope.dt);
+      form.startEventDate.setHours($scope.time.getHours(), $scope.time.getMinutes(), $scope.time.getSeconds());
+      console.log(form);
+      $http.post('/api/events',form).success(function(){
+        alert();
+      })
+    }
 
   });

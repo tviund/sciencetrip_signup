@@ -12,7 +12,10 @@ angular.module('tviundApp')
 
 
     $scope.createOrg = function (form) {
-      $http.post('/api/org', {name: form.name});
+      $http.post('/api/org', {name: form.name}).success(function(){
+        form = '';
+        $scope.addOrg = false;
+      });
     };
 
     $scope.deleteOrg = function(id){

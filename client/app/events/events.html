@@ -1,9 +1,9 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="container">
-    <ul>
-        <li ng-repeat="event in events">
-            {{ event.name }}
-        </li>
-    </ul>
+  <div class="row">
+    <div class="list-group">
+      <a class="list-group-item" href="/events/{{ event._id }}" ng-repeat="event in events"> {{ event.name }} - {{ event.startEventDate }}</a>
+    </div>
+  </div>
 </div>

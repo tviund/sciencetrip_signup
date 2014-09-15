@@ -12,6 +12,9 @@ angular.module('tviundApp')
       {
         'title': 'Create event',
         'link': '/events/create'
+      }, {
+        'title': 'System Admin',
+        'link': '/admin'
       }];
 
     $scope.isCollapsed = true;
