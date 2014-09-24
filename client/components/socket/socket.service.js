@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('tviundApp')
-  .factory('socket', function(socketFactory) {
+  .factory('socket', function(socketFactory, $rootScope) {
 
     // socket.io now auto-configures its connection when we ommit a connection url
     var ioSocket = io('', {
@@ -60,7 +60,19 @@ angular.module('tviundApp')
           cb(event, item, array);
         });
       },
+      syncUpdateOnObject: function(modelName, obj, cb){
+        cb = cb || angular.noop;
 
+        /**
+         * Syncs  object updates on 'model:save'
+         */
+        socket.on(modelName + ':save', function (newObj) {
+          $rootScope.$apply(function(){
+            _.extend(obj,newObj);
+          });
+          cb(event, newObj, obj);
+        })
+      },
       /**
        * Removes listeners for a models updates on the socket
        *

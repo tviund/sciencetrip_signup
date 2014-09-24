@@ -16,8 +16,8 @@ var EventSchema = new Schema({
   limit: Number,
   hosts: [{type: Schema.Types.ObjectId, ref: 'Org'}],
   groups: [{type: Schema.Types.ObjectId, ref: 'Group'}],
-  attending: [{type: Schema.Types.ObjectId, ref: 'User'}],
-  queue: [{type: Schema.Types.ObjectId, ref: 'User'}]
+  attending: [{user:{type: Schema.Types.ObjectId, ref: 'User'}, name: String, timestamp: Date}],
+  queue: [{user:{type: Schema.Types.ObjectId, ref: 'User'}, name: String, timestamp: Date}],
 });
 
 
