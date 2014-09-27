@@ -16,15 +16,15 @@ mongoose.connect(config.mongo.uri, config.mongo.options);
 
 // Populate DB with sample data
 if (config.seedDB) {
-    require('./config/seed');
+	require('./config/seed');
 }
 
 // Setup server
 var app = express();
 var server = require('http').createServer(app);
 var socketio = require('socket.io')(server, {
-    serveClient: (config.env === 'production') ? false : true,
-    path: '/socket.io-client'
+	serveClient: (config.env === 'production') ? false : true,
+	path: '/socket.io-client'
 });
 require('./config/socketio')(socketio);
 require('./config/express')(app);
@@ -32,7 +32,7 @@ require('./routes')(app);
 
 // Start server
 server.listen(config.port, config.ip, function () {
-    console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
+	console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
 });
 
 // Expose app

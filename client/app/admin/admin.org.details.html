@@ -6,7 +6,8 @@
       <div class="list-group">
         <a class="list-group-item" ng-repeat="group in org.groups">
           {{ group.name }} <i class="fa fa-times pull-right" ng-click="removeGroup(group._id)"></i></a>
-        <a class="list-group-item" ng-hide="addGroup" ng-click="addGroup =! addGroup">Bæta við <i class="fa fa-plus"></i></a>
+        <a class="list-group-item" ng-hide="addGroup" ng-click="addGroup =! addGroup">Bæta við <i
+          class="fa fa-plus"></i></a>
           <span class="list-group-item" ng-show="addGroup">
             <div class="input-group">
               <input type="text" class="form-control" ng-model="groupCreate.name">

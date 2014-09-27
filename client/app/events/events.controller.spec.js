@@ -2,20 +2,20 @@
 
 describe('Controller: EventsCtrl', function () {
 
-  // load the controller's module
-  beforeEach(module('tviundApp'));
+	// load the controller's module
+	beforeEach(module('tviundApp'));
 
-  var EventsCtrl, scope;
+	var EventsCtrl, scope;
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    EventsCtrl = $controller('EventsCtrl', {
-      $scope: scope
-    });
-  }));
+	// Initialize the controller and a mock scope
+	beforeEach(inject(function ($controller, $rootScope) {
+		scope = $rootScope.$new();
+		EventsCtrl = $controller('EventsCtrl', {
+			$scope: scope
+		});
+	}));
 
-  it('should ...', function () {
-    expect(1).toEqual(1);
-  });
+	it('should ...', function () {
+		expect(1).toEqual(1);
+	});
 });
