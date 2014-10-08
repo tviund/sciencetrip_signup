@@ -1,0 +1,72 @@
+<div class="row">
+	<div class="btn-group spacer">
+		<button type="button" class="btn btn-primary" ng-click="um.importUsers()">Búa til notendur</button>
+	</div>
+</div>
+
+<div class="row">
+	<table class="table table-hover">
+		<thead>
+		<tr>
+			<th>Nafn</th>
+			<th>Email</th>
+		</tr>
+		</thead>
+		<tr ng-repeat="user in um.users">
+			<td>{{ user.name }}</td>
+			<td>{{ user.email }}</td>
+		</tr>
+	</table>
+</div>
+<div class="row">
+	<div class="col-xs-12">
+	</div>
+</div>
+<!-- USER IMPORT MODAL -->
+<script type="text/ng-template" id="importUserModal.html">
+	<div class="modal-header">
+		<h3 class="modal-title">Búa til notendur</h3>
+	</div>
+	<div class="modal-body">
+		<form ng-if="!modal.preview">
+			<div class="form-group">
+				<label>File input</label>
+				<file on-file="modal.sendForPreview(file)"></file>
+			</div>
+		</form>
+		<div class="row" ng-show="modal.loading || modal.saving">
+			<div class="col-xs-12 text-center clearfix">
+				<i class="fa fa-3x fa-circle-o-notch fa-spin"></i>
+				<span ng-show="modal.loading">Loading...</span>
+				<span ng-show="modal.saving">Saving...</span>
+			</div>
+		</div>
+		<div class="row">
+			<div ng-if="modal.preview && !modal.loading" class="col-xs-12" style="max-height: 350px; overflow: scroll;">
+				<p>Nýjir hópar sem verða búnir til</p>
+				<ul>
+					<li ng-repeat="group in modal.missing">{{ group }}</li>
+				</ul>
+				<table class="table table-hover">
+					<thead>
+					<tr>
+						<td>Nafn</td>
+						<td>Email</td>
+						<td>Hópur</td>
+					</tr>
+					</thead>
+					<tr ng-repeat="person in modal.preview.persons">
+						<td>{{ person.name }}</td>
+						<td>{{ person.email }}</td>
+						<td>{{ person.group }}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" ng-disabled="modal.saving" ng-click="modal.ok()">OK</button>
+		<button class="btn btn-warning" ng-disabled="modal.saving" ng-click="modal.cancel()">Cancel</button>
+	</div>
+</script>
+<!--END OF USER IMPORT MODAL-->

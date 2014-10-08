@@ -37,6 +37,7 @@ exports.create = function (req, res) {
 	});
 };
 
+
 // Updates an existing group in the DB.
 exports.update = function (req, res) {
 	if (req.body._id) {

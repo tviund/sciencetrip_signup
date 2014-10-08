@@ -1,29 +1,34 @@
-'use strict';
+(function () {
+	'use strict';
+	function loginCtrl(Auth, $location, $window) {
+		var self = this;
+		this.user = {};
+		this.errors = {};
 
-angular.module('tviundApp')
-    .controller('LoginCtrl', function ($scope, Auth, $location, $window) {
-        $scope.user = {};
-        $scope.errors = {};
+		this.login = function (form) {
+			self.submitted = true;
 
-        $scope.login = function (form) {
-            $scope.submitted = true;
+			if (form.$valid) {
+				Auth.login({
+					email: self.user.email,
+					password: self.user.password
+				})
+					.then(function () {
+						// Logged in, redirect to home
+						$location.path('/');
+					})
+					.catch(function (err) {
+						self.errors.other = err.message;
+					});
+			}
+		};
 
-            if (form.$valid) {
-                Auth.login({
-                    email: $scope.user.email,
-                    password: $scope.user.password
-                })
-                    .then(function () {
-                        // Logged in, redirect to home
-                        $location.path('/');
-                    })
-                    .catch(function (err) {
-                        $scope.errors.other = err.message;
-                    });
-            }
-        };
+		this.loginOauth = function (provider) {
+			$window.location.href = '/auth/' + provider;
+		};
+	}
 
-        $scope.loginOauth = function (provider) {
-            $window.location.href = '/auth/' + provider;
-        };
-    });
+	angular.module('tviundApp')
+		.controller('LoginCtrl', loginCtrl)
+
+})();

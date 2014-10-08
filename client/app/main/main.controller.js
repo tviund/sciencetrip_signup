@@ -1,7 +1,6 @@
-'use strict';
-
-angular.module('tviundApp')
-	.controller('MainCtrl', function ($scope, $http, socket) {
+(function () {
+	'use strict';
+	function mainCtrl($scope, $http, socket) {
 		$scope.awesomeThings = [];
 
 		$http.get('/api/events').success(function (awesomeThings) {
@@ -24,4 +23,8 @@ angular.module('tviundApp')
 		$scope.$on('$destroy', function () {
 			socket.unsyncUpdates('event');
 		});
-	});
+	}
+
+	angular.module('tviundApp')
+		.controller('MainCtrl', mainCtrl);
+})();

@@ -1,8 +1,7 @@
-/* global io */
-'use strict';
-
-angular.module('tviundApp')
-	.factory('socket', function (socketFactory) {
+(function () {
+	/* global io */
+	'use strict';
+	function socketService(socketFactory) {
 
 		// socket.io now auto-configures its connection when we ommit a connection url
 		var ioSocket = io('', {
@@ -81,4 +80,9 @@ angular.module('tviundApp')
 				socket.removeAllListeners(modelName + ':remove');
 			}
 		};
-	});
+	};
+
+
+	angular.module('tviundApp')
+		.factory('socket', socketService)
+})();

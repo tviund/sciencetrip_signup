@@ -1,25 +1,16 @@
-'use strict';
+(function () {
+	'use strict';
 
-angular.module('tviundApp', [
-	'ngCookies',
-	'ngResource',
-	'ngSanitize',
-	'btford.socket-io',
-	'ui.router',
-	'ui.bootstrap',
-	'ui.select',
-	'timer',
-	'ngFx'
-])
-	.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, uiSelectConfig) {
+
+	function appConfig($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, uiSelectConfig) {
 		$urlRouterProvider
 			.otherwise('/');
 		uiSelectConfig.theme = 'bootstrap';
 		$locationProvider.html5Mode(true);
 		$httpProvider.interceptors.push('authInterceptor');
-	})
+	}
 
-	.factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
+	function authInterceptor($rootScope, $q, $cookieStore, $location) {
 		return {
 			// Add authorization token to headers
 			request: function (config) {
@@ -43,9 +34,9 @@ angular.module('tviundApp', [
 				}
 			}
 		};
-	})
+	}
 
-	.run(function ($rootScope, $location, Auth) {
+	function appRun($rootScope, $location, Auth) {
 		// Redirect to login if route requires auth and you're not logged in
 		$rootScope.$on('$stateChangeStart', function (event, next) {
 			Auth.isLoggedInAsync(function (loggedIn) {
@@ -54,4 +45,20 @@ angular.module('tviundApp', [
 				}
 			});
 		});
-	});
+	}
+
+	angular.module('tviundApp', [
+		'ngCookies',
+		'ngResource',
+		'ngSanitize',
+		'btford.socket-io',
+		'ui.router',
+		'ui.bootstrap',
+		'ui.select',
+		'timer',
+		'ngFx'
+	])
+		.config(appConfig)
+		.factory('authInterceptor', authInterceptor)
+		.run(appRun);
+})();

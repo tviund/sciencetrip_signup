@@ -15,17 +15,21 @@
     "express-session": "~1.0.2",
     "jsonwebtoken": "^0.3.0",
     "lodash": "~2.4.1",
+    "mailgun-js": "^0.6.3",
     "method-override": "~1.0.0",
     "mongoose": "~3.8.16",
     "morgan": "~1.0.0",
+    "multer": "^0.1.4",
     "passport": "~0.2.0",
     "passport-facebook": "latest",
     "passport-local": "~0.1.6",
     "q": "^1.0.1",
+    "randomstring": "^1.0.3",
     "serve-favicon": "~2.0.1",
     "socket.io": "^1.0.6",
     "socket.io-client": "^1.0.6",
-    "socketio-jwt": "^2.0.2"
+    "socketio-jwt": "^2.0.2",
+    "xlsjs": "^0.7.1"
   },
   "devDependencies": {
     "grunt": "~0.4.4",

@@ -1,3 +1,4 @@
+/*
 'use strict';
 
 describe('Controller: EventsCreateCtrl', function () {
@@ -19,3 +20,4 @@ describe('Controller: EventsCreateCtrl', function () {
 		expect(1).toEqual(1);
 	});
 });
+*/

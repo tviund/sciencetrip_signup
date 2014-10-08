@@ -1,38 +1,36 @@
-'use strict';
+(function () {
+	'use strict';
 
-angular.module('tviundApp')
-	.controller('EventsCreateCtrl', function ($scope, $http) {
-
-		$scope.model = {};
-		$scope.open = function ($event) {
+	function eventCreateCtrl($http) {
+		var self = this;
+		this.open = function ($event) {
 			$event.preventDefault();
 			$event.stopPropagation();
 
-			$scope.opened = true;
+			self.opened = true;
 		};
 
-		$scope.dateOptions = {
+		this.dateOptions = {
 			formatYear: 'yy',
 			startingDay: 1
 		};
 
-		$scope.initDate = new Date();
-		$scope.format = 'dd/MM/yyyy';
+		this.initDate = new Date();
+		this.format = 'dd/MM/yyyy';
 
-		$scope.$watch('time', function (val) {
-			console.log(val);
-		});
-
-		$scope.createEvent = function (form) {
-			if (!$scope.time) {
-				$scope.time = new Date();
+		this.createEvent = function (event) {
+			if (!self.time) {
+				self.time = new Date();
 			}
-			form.startEventDate = new Date($scope.dt);
-			form.startEventDate.setHours($scope.time.getHours(), $scope.time.getMinutes(), $scope.time.getSeconds());
-			console.log(form);
-			$http.post('/api/events', form).success(function () {
+			event.startEventDate = new Date(self.dt);
+			event.startEventDate.setHours(self.time.getHours(), self.time.getMinutes(), self.time.getSeconds());
+
+			$http.post('/api/events', event).success(function () {
 				alert();
 			})
 		}
+	}
 
-	});
+	angular.module('tviundApp')
+		.controller('EventsCreateCtrl',eventCreateCtrl)
+})();
