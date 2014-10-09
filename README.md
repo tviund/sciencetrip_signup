@@ -1,5 +1,6 @@
 # Tviunds science trip system
 
+[![Build Status](https://travis-ci.org/tviund/sciencetrip_signup.svg?branch=master)](https://travis-ci.org/tviund/sciencetrip_signup)
 [![Stories in Ready](https://badge.waffle.io/tviund/sciencetrip_signup.png?label=ready&title=Ready)](http://waffle.io/tviund/sciencetrip_signup)
 
 ## Testing
