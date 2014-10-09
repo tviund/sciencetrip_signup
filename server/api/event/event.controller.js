@@ -125,7 +125,8 @@ exports.removeAttendee = function (req, res) {
     if (!event) {
       return res.send(404);
     }
-    var index = undefined;
+    var index;
+
     // Remove from queue
     if ((index = indexOfInList(event.queue, req.user.id)) !== -1) {
       event.queue.splice(index, 1);

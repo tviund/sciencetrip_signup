@@ -24,9 +24,6 @@ var EventSchema = new Schema({
 
 EventSchema.pre('save', function(next){
 	this.createDate = new Date();
-	if ( !this.createDate ) {
-		this.createDate = now;
-	}
 	next();
 });
 
