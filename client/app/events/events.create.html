@@ -5,8 +5,8 @@
     <div class="col-sm-12">
       <h1>Create event</h1>
     </div>
-    <div class="col-sm-12">
-      <form role="form" ng-submit="createEvent(model)">
+    <form role="form" ng-submit="createEvent(model)">
+      <div class="col-sm-12">
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" class="form-control" ng-model="model.name" id="name">
@@ -24,21 +24,20 @@
           <label for="limit">Name</label>
           <input type="number" class="form-control" ng-model="model.limit" min="0" id="limit">
         </div>
-        <div class="form-group col-xs-6">
-          <label for="date">Dagsetning</label>
-          <p class="input-group">
-            <input type="text" id="date" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-              </span>
-          </p>
-        </div>
-        <div class="form-group col-xs-6">
-
-          <timepicker ng-model="time" show-meridian="false"></timepicker>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-    </div>
+     </div>
+     <div class="form-group col-xs-10" style='padding: 9px 15px;'>
+       <label for="date">Dagsetning</label>
+       <p class="input-group">
+         <input type="text" id="date" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+           <span class="input-group-btn">
+             <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+           </span>
+       </p>
+     </div>
+     <div class="form-group col-xs-2">
+       <timepicker ng-model="time" show-meridian="false"></timepicker>
+     </div>
+     <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
   </div>
 </div>
