@@ -1,0 +1,30 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <form ng-submit='submitForm()'>
+        <div class='form-group'>
+          <label class='control-label'>Nafn</label>
+          <input ng-model="event.name" class='form-control' />
+          <label class="control-label">Upplýsingar:</label>
+          <input ng-model="event.info" class='form-control' />
+          <label class="control-label">Staðsetning:</label>
+          <input ng-model="event.location" class='form-control' />
+          <label class=" control-label">Fjöldi:</label>
+          <input ng-model="event.limit" class='form-control' />
+          <label for="date">Dagsetning</label>
+          <p class="input-group">
+            <input type="text" id="date" class="form-control" datepicker-popup="{{format}}" ng-model="event.startEventDate" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+          </p>
+          <div class="input-group">
+            <button class="btn btn-primary" type='submit'>Vista</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

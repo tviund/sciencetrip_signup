@@ -8,33 +8,28 @@
     <div class="panel-body">
       <div class="form-group">
         <label class="col-sm-12 control-label">Upplýsingar:</label>
-
         <div class="col-sm-12">
           {{ event.info }}
         </div>
       </div>
       <div class="form-group">
         <label class="col-sm-12 control-label">Staðsetning:</label>
-
         <div class="col-sm-12">
           {{ event.location }}
         </div>
       </div>
       <div class="form-group">
         <label class="col-sm-12 control-label">Fjöldi:</label>
-
         <div class="col-sm-12">
           {{ event.limit }}
         </div>
       </div>
       <div class="form-group">
         <label class="col-sm-12 control-label">Skráning hefst: </label>
-
         <div class="col-sm-12" ng-if="event.startEventDate && event.showTimer">
           <div class="form-group">
             {{ event.startEventDate }}
             <br/>
-
             <strong>
               <timer countdown="event.countdownInSec" interval="1000" finish-callback="countdownFinished()">
                 {{days}}
@@ -49,6 +44,7 @@
           <div class="form-group text-center">
             <button class="btn btn-primary" ng-disabled="!event.enableRegistration" ng-hide="isRegistered()" ng-click="register()">Skrá sig</button>
             <button class="btn btn-danger" ng-disabled="!event.enableRegistration" ng-show="isRegistered()"  ng-click="deRegister()">Afskrá</button>
+            <button class='btn btn-warning' ng-show='isAdmin' ng-click="editEvent()">Edit</button>
           </div>
         </div>
       </div>

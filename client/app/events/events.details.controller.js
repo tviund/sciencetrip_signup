@@ -1,11 +1,17 @@
 'use strict';
 
 angular.module('tviundApp')
-  .controller('EventsDetailsCtrl', function ($scope, $http, socket, $stateParams, Auth) {
+  .controller('EventsDetailsCtrl', function ($scope, $http, socket, $stateParams, Auth, $location) {
     $http.get('/api/events/' + $stateParams.id).success(function (event) {
       $scope.event = event;
       $scope.event.enableRegistration = false;
       $scope.event.showTimer = true;
+      $scope.isAdmin = Auth.isAdmin();
+
+      $scope.editEvent = function() {
+        $location.url('/events/edit/' + event._id).replace();
+      };
+
       $scope.event.countdownInSec = moment(event.startEventDate).diff(moment(), 'seconds');
       if ($scope.event.countdownInSec < 0) {
         // To hide the timer

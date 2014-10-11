@@ -13,6 +13,11 @@ angular.module('tviundApp')
         templateUrl: 'app/events/events.create.html',
         controller: 'EventsCreateCtrl'
       })
+      .state('edit', {
+        url: '/events/edit/:id',
+        templateUrl: 'app/events/events.edit.html',
+        controller: 'EventsEditCtrl'
+      })
       .state('events-details', {
         url: '/events/:id',
         templateUrl: 'app/events/events.details.html',
