@@ -42,6 +42,6 @@
 	}
 
 	angular.module('tviundApp')
-		.config(adminConfig())
+		.config(adminConfig)
 
 })();
