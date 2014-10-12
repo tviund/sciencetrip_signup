@@ -2,7 +2,6 @@
 
 angular.module('tviundApp')
   .controller('EventsCreateCtrl', function ($scope, $http) {
-
     $scope.model = {};
     $scope.open = function ($event) {
       $event.preventDefault();
