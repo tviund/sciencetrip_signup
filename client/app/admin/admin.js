@@ -1,6 +1,5 @@
 (function () {
 	'use strict';
-
 	function adminConfig($stateProvider) {
 		$stateProvider
 			.state('admin', {
@@ -39,9 +38,8 @@
 				controller: 'AdminOrgDetailsUsersCtrl',
 				controllerAs: 'um'
 			});
-	}
+	};
 
 	angular.module('tviundApp')
-		.config(adminConfig())
-
+		.config(adminConfig);
 })();

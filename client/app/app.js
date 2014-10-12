@@ -1,7 +1,6 @@
 (function () {
 	'use strict';
 
-
 	function appConfig($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, uiSelectConfig) {
 		$urlRouterProvider
 			.otherwise('/');
