@@ -1,5 +1,5 @@
-angular.module('tviundApp')
-	.controller('EventsEditCtrl', function ($stateParams, $scope, $log, $http, $location) {
+(function () {
+	function eventsEditCtrl($stateParams, $scope, $log, $http, $location) {
 		$http.get('/api/events/' + $stateParams.id).success(function (event) {
 			$scope.event = event;
 		});
@@ -26,4 +26,9 @@ angular.module('tviundApp')
 					$location.path('/events/' + $scope.event._id).replace();
 				});
 		};
-	});
+	}
+
+	angular.module('tviundApp')
+		.controller('EventsEditCtrl', eventsEditCtrl);
+
+})();
