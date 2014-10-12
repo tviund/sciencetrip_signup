@@ -13,6 +13,11 @@ angular.module('tviundApp')
         templateUrl: 'app/admin/admin.user.create.html',
         controller: 'AdminUserCreateCtrl'
       })
+      .state('listUsers', {
+        url: '/admin/listUsers',
+        templateUrl: 'app/admin/admin.user.list.html',
+        controller: 'AdminUserListCtrl'
+      })
       .state('org', {
         url: '/admin/org',
         templateUrl: 'app/admin/admin.org.html',
