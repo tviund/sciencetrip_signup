@@ -32,5 +32,5 @@
 	}
 
 	angular.module('tviundApp')
-		.controller('EventsCreateCtrl',eventCreateCtrl)
+		.controller('EventsCreateCtrl', eventCreateCtrl);
 })();

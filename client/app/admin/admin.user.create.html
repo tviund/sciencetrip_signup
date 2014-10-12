@@ -1,64 +1,70 @@
 <navbar/>
 
 <div class="container">
-  <p>Create a user</p>
+	<p>Create a user</p>
 
-  <form role="form" class="col-xs-6 col-xs-offset-3" ng-submit="createUser(model)">
-    <div class="form-group">
-      <label for="name" class="col-sm-12 control-label">Name</label>
+	<form role="form" class="col-xs-6 col-xs-offset-3" ng-submit="createUser(model)">
+		<div class="form-group">
+			<label for="name" class="col-sm-12 control-label">Name</label>
 
-      <div class="col-sm-10">
-        <input type="text" name="name" id="name" class="form-control" ng-model="model.name" required="required">
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="email" class="col-sm-12 control-label">Email</label>
+			<div class="col-sm-10">
+				<input type="text" name="name" id="name" class="form-control" ng-model="model.name" required="required">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="email" class="col-sm-12 control-label">Email</label>
 
-      <div class="col-sm-10">
-        <input type="text" name="name" id="email" class="form-control" ng-model="model.email" required="required">
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="password" class="col-sm-12 control-label">Password</label>
+			<div class="col-sm-10">
+				<input type="text" name="name" id="email" class="form-control" ng-model="model.email"
+					   required="required">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="password" class="col-sm-12 control-label">Password</label>
 
-      <div class="col-sm-10">
-        <input type="text" name="name" id="password" class="form-control" ng-model="model.password" required="required">
-      </div>
-    </div>
-    <div class="form-group" ng-if="orgs">
-      <label class="col-sm-12 control-label">Félag</label>
+			<div class="col-sm-10">
+				<input type="text" name="name" id="password" class="form-control" ng-model="model.password"
+					   required="required">
+			</div>
+		</div>
+		<div class="form-group" ng-if="orgs">
+			<label class="col-sm-12 control-label">Félag</label>
 
-      <div class="col-sm-10">
-        <ui-select multiple ng-model="model.selected">
-          <ui-select-match placeholder="Veldu félag..">{{$item.name}}</ui-select-match>
-          <ui-select-choices repeat="org in orgs | filter: $select.search">
-            {{org.name}}
-          </ui-select-choices>
-        </ui-select>
-      </div>
-    </div>
+			<div class="col-sm-10">
+				<ui-select multiple ng-model="model.selected">
+					<ui-select-match placeholder="Veldu félag..">{{$item.name}}</ui-select-match>
+					<ui-select-choices repeat="org in orgs | filter: $select.search">
+						{{org.name}}
+					</ui-select-choices>
+				</ui-select>
+			</div>
+		</div>
 
-    <div class="form-group" ng-if="showGroups">
-      <label class="col-sm-12 control-label">Hópur</label>
-      <div class="row">
-        <div class="col-xs-6">
-          <p class="text-center"><strong>Hópar í boði</strong></p>
-          <div class="list-group">
-            <a class="list-group-item" ng-repeat="group in groups" ng-click="addGroup(group)">
-              {{ group.name }} - {{ group.owner }} <i class="fa fa-chevron-right"></i></a>
-          </div>
-        </div>
-        <div class="col-xs-6">
-          <p class="text-center"><strong>Valdir hópar</strong></p>
-          <div class="list-group">
-            <a class="list-group-item" ng-repeat="group in model.selectedGroups" ng-click="removeGroup(group)">
-              <i class="fa fa-chevron-left"></i> {{ group.name }} - {{ group.owner }}</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="form-group col-xs-12">
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
-  </form>
+		<div class="form-group" ng-if="showGroups">
+			<label class="col-sm-12 control-label">Hópur</label>
+
+			<div class="row">
+				<div class="col-xs-6">
+					<p class="text-center"><strong>Hópar í boði</strong></p>
+
+					<div class="list-group">
+						<a class="list-group-item" ng-repeat="group in groups" ng-click="addGroup(group)">
+							{{ group.name }} - {{ group.owner }} <i class="fa fa-chevron-right"></i></a>
+					</div>
+				</div>
+				<div class="col-xs-6">
+					<p class="text-center"><strong>Valdir hópar</strong></p>
+
+					<div class="list-group">
+						<a class="list-group-item" ng-repeat="group in model.selectedGroups"
+						   ng-click="removeGroup(group)">
+							<i class="fa fa-chevron-left"></i> {{ group.name }} - {{ group.owner }}</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group col-xs-12">
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</div>
+	</form>
 </div>

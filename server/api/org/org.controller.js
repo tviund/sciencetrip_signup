@@ -194,6 +194,7 @@ function _createNewUser(persons, org) {
 	// This call will return a promise
 	var deferred = q.defer();
 	var newPersons = [];
+	var updatePersons = [];
 	// Find if there are any existing persons in the list
 	User.find({
 		email: {$in: _.flatten(persons, 'email')}
@@ -203,7 +204,8 @@ function _createNewUser(persons, org) {
 		}
 		// Go through all the persons in the creation request and check if they exist if not create them
 		_.forEach(persons, function (person) {
-			if (!_.contains(foundPersons, {email: person.email})) {
+			var foundPerson = false;
+			if (!(foundPerson = _.find(foundPersons, {email: person.email}))) {
 				// Create a random 7 letter password
 				var tempPassword = randomString.generate(7);
 				// Find group of user
@@ -223,15 +225,41 @@ function _createNewUser(persons, org) {
 				}));
 				mailer.sendNewUserEmail(person.email, tempPassword);
 			}
-		});
-		// Bulk creation of users
-		User.create(newPersons, function (err) {
-			if (err) {
-				deferred.reject(err);
+			else {
+				// If user exists we need to check if he is in the same organization if not we add a new org to the user.
+				if (!_.find(foundPerson.orgs, org._id)) {
+					foundPerson.orgs.push(org._id);
+				}
+				if (!_.find(foundPerson.groups, group._id)) {
+					foundPerson.groups.push(org._id);
+				}
+				updatePersons.push(foundPerson);
 			}
-			// Return the newly created users
-			deferred.resolve(_.rest(arguments, 1));
-		})
+		});
+		var updates = [];
+		_.forEach(updatePersons, function (update) {
+			var deferred = q.defer();
+			updates.push(deferred.promise);
+			update.save(function (err) {
+				if (err) {
+					return deferred.reject(err);
+				}
+				return deferred.resolve();
+			})
+		});
+		q.all(updates).then(function () {
+			// Bulk creation of users
+			User.create(newPersons, function (err) {
+				if (err) {
+					deferred.reject(err);
+				}
+				// Return the newly created users
+				// TODO: improve return
+				deferred.resolve(_.rest(arguments, 1));
+			})
+		}, function(){
+			deferred.reject();
+		});
 	});
 	return deferred.promise;
 }

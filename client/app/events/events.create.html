@@ -1,4 +1,4 @@
-<navbar/>
+<div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="container">
 	<div class="row">
@@ -30,15 +30,16 @@
 					<p class="input-group">
 						<input type="text" id="date" class="form-control" datepicker-popup="{{ vm.format }}"
 							   ng-model="vm.dt"
-							   is-open="vm.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"/>
+							   is-open="vm.opened" datepicker-options="dateOptions" ng-required="true"
+							   close-text="Close"/>
               <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="vm.open($event)"><i
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i
 					class="glyphicon glyphicon-calendar"></i></button>
               </span>
 					</p>
 				</div>
 				<div class="form-group col-xs-6">
-					<timepicker ng-model="vm.time" show-meridian="false"></timepicker>
+					<timepicker ng-model="time" show-meridian="false"></timepicker>
 				</div>
 				<button type="submit" class="btn btn-primary">Submit</button>
 			</form>

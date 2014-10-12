@@ -1,7 +1,7 @@
-(function () {
-	'use strict';
+'use strict';
 
-	function adminConfig($stateProvider) {
+angular.module('tviundApp')
+	.config(function ($stateProvider) {
 		$stateProvider
 			.state('admin', {
 				url: '/admin',
@@ -12,6 +12,11 @@
 				url: '/admin/createUser',
 				templateUrl: 'app/admin/admin.user.create.html',
 				controller: 'AdminUserCreateCtrl'
+			})
+			.state('listUsers', {
+				url: '/admin/listUsers',
+				templateUrl: 'app/admin/admin.user.list.html',
+				controller: 'AdminUserListCtrl'
 			})
 			.state('org', {
 				url: '/admin/org',
@@ -34,9 +39,4 @@
 				controller: 'AdminOrgDetailsUsersCtrl',
 				controllerAs: 'um'
 			});
-	}
-
-	angular.module('tviundApp')
-		.config(adminConfig)
-
-})();
+	});
