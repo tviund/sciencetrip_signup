@@ -48,11 +48,11 @@
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="form-group text-center">
-						<button class="btn btn-primary" ng-disabled="!vm.enableRegistration" ng-hide="vm.isRegistered()"
-								ng-click="vm.register()">Skrá sig
+						<button class="btn btn-primary" ng-disabled="vm.event.isRegistered()" ng-hide="vm.event.isRegistered()"
+								ng-click="vm.event.register()">Skrá sig
 						</button>
-						<button class="btn btn-danger" ng-disabled="!vm.enableRegistration" ng-show="vm.isRegistered()"
-								ng-click="vm.deRegister()">Afskrá
+						<button class="btn btn-danger" ng-disabled="!vm.event.isRegistered()" ng-show="vm.event.isRegistered()"
+								ng-click="vm.event.deRegister()">Afskrá
 						</button>
 					</div>
 				</div>

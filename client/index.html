@@ -14,6 +14,7 @@
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
       <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css" />
+      <link rel="stylesheet" href="bower_components/toastr/toastr.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
@@ -60,6 +61,7 @@
       <script src="bower_components/angular-timer/dist/angular-timer.js"></script>
       <script src="bower_components/moment/moment.js"></script>
       <script src="bower_components/ngFx/dist/ngFx.js"></script>
+      <script src="bower_components/toastr/toastr.js"></script>
       <!-- endbower -->
       <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->
@@ -83,6 +85,7 @@
           <script src="app/events/events.details.controller.js"></script>
           <script src="app/events/events.edit.controller.js"></script>
           <script src="app/events/events.js"></script>
+          <script src="app/events/events.service.js"></script>
           <script src="app/main/main.controller.js"></script>
           <script src="app/main/main.js"></script>
           <script src="components/auth/auth.service.js"></script>
@@ -90,6 +93,7 @@
           <script src="components/mongoose-error/mongoose-error.directive.js"></script>
           <script src="components/navbar/navbar.directive.js"></script>
           <script src="components/socket/socket.service.js"></script>
+          <script src="components/toastr/toastr.service.js"></script>
           <!-- endinjector -->
         <!-- endbuild -->
 </body>

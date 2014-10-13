@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="list-group">
 			<a class="list-group-item" href="/events/{{ event._id }}" ng-repeat="event in vm.events">
-				{{ event.name }} - {{ event.startEventDate }}</a>
+				{{ event.name }} - {{ event.startEventDate }} <span class="badge" ng-show="event.isRegistered()"><i class="fa fa-check"></i></span></a>
 		</div>
 	</div>
 </div>

@@ -6,7 +6,12 @@
 				url: '/events',
 				templateUrl: 'app/events/events.html',
 				controller: 'EventsCtrl',
-				controllerAs: 'vm'
+				controllerAs: 'vm',
+				resolve: {
+					events: function (events) {
+						return events.all();
+					}
+				}
 			})
 			.state('create', {
 				url: '/events/create',
@@ -23,7 +28,12 @@
 				url: '/events/:id',
 				templateUrl: 'app/events/events.details.html',
 				controller: 'EventsDetailsCtrl',
-				controllerAs: 'vm'
+				controllerAs: 'vm',
+				resolve: {
+					event: function (events, $stateParams) {
+						return events.byId($stateParams.id);
+					}
+				}
 			})
 	}
 
