@@ -99,3 +99,17 @@ exports.me = function (req, res, next) {
 exports.authCallback = function (req, res, next) {
 	res.redirect('/');
 };
+
+exports.blacklist = function(req, res, next) {
+	var userId = req.params.id;
+
+	User.findById(userId, function (err, user) {
+		if (err) return next(err);
+		if (!user) return res.send(401);
+        user.onBlackList = true;
+        user.save(function (err) {
+            if (err) return validationError(res, err);
+            res.send(200);
+        });
+	});
+};
