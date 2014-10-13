@@ -1,48 +1,42 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="container">
-	<div class="row">
-		<div class="col-sm-12">
-			<h1>Create event</h1>
-		</div>
-		<div class="col-sm-12">
-			<form role="form" ng-submit="vm.createEvent(vm.event)">
-				<div class="form-group">
-					<label for="name">Name</label>
-					<input type="text" class="form-control" ng-model="vm.event.name" id="name">
-				</div>
-				<div class="form-group">
-					<label for="info">Lýsing</label>
-					<textarea class="form-control" name="info" ng-model="vm.event.info" id="info" cols="30" rows="10">
-					</textarea>
-				</div>
-				<div class="form-group">
-					<label for="location">Staðsetning</label>
-					<input type="text" class="form-control" ng-model="vm.event.location" id="location">
-				</div>
-				<div class="form-group">
-					<label for="limit">Fjöldi</label>
-					<input type="number" class="form-control" ng-model="vm.event.limit" min="0" id="limit">
-				</div>
-				<div class="form-group col-xs-6">
-					<label for="date">Dagsetning</label>
-
-					<p class="input-group">
-						<input type="text" id="date" class="form-control" datepicker-popup="{{ vm.format }}"
-							   ng-model="vm.dt"
-							   is-open="vm.opened" datepicker-options="dateOptions" ng-required="true"
-							   close-text="Close"/>
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="open($event)"><i
-					class="glyphicon glyphicon-calendar"></i></button>
-              </span>
-					</p>
-				</div>
-				<div class="form-group col-xs-6">
-					<timepicker ng-model="time" show-meridian="false"></timepicker>
-				</div>
-				<button type="submit" class="btn btn-primary">Submit</button>
-			</form>
-		</div>
-	</div>
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Create event</h1>
+    </div>
+    <form role="form" ng-congroller='EventsCreateCtrl' ng-submit="submitEvent()">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" ng-model="model.name" id="name" required>
+        </div>
+        <div class="form-group">
+          <label for="info">Lýsing</label>
+          <textarea class="form-control" name="info" ng-model="model.info" id="info" cols="30" rows="10" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="location">Staðsetning</label>
+          <input type="text" class="form-control" ng-model="model.location" id="location" required>
+        </div>
+        <div class="form-group">
+          <label for="limit">Fjöldi sæta</label>
+          <input type="number" class="form-control" ng-model="model.limit" min="0" id="limit" required>
+        </div>
+     </div>
+     <div class="form-group col-xs-10" style='padding: 9px 15px;'>
+       <label for="date">Dagsetning</label>
+       <p class="input-group">
+         <input type="text" id="date" class="form-control" datepicker-popup="{{format}}" ng-model="model.date" is-open="opened" datepicker-options="dateOptions" required close-text="Loka" clear-text='Hreinsa' current-text='Í dag'/>
+           <span class="input-group-btn">
+             <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+           </span>
+       </p>
+     </div>
+     <div class="form-group col-xs-2">
+       <timepicker ng-model="time" show-meridian="false" required></timepicker>
+     </div>
+     <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
 </div>

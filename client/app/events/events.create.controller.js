@@ -1,36 +1,25 @@
 (function () {
-	'use strict';
-
-	function eventCreateCtrl($http) {
-		var self = this;
-		this.open = function ($event) {
-			$event.preventDefault();
-			$event.stopPropagation();
-
-			self.opened = true;
-		};
-
-		this.dateOptions = {
-			formatYear: 'yy',
-			startingDay: 1
-		};
-
-		this.initDate = new Date();
-		this.format = 'dd/MM/yyyy';
-
-		this.createEvent = function (event) {
-			if (!self.time) {
-				self.time = new Date();
-			}
-			event.startEventDate = new Date(self.dt);
-			event.startEventDate.setHours(self.time.getHours(), self.time.getMinutes(), self.time.getSeconds());
-
-			$http.post('/api/events', event).success(function () {
-				alert();
-			})
-		}
-	}
-
-	angular.module('tviundApp')
-		.controller('EventsCreateCtrl', eventCreateCtrl);
+  'use strict';
+  
+  function eventCreateCtrl($scope, $http, $filter, $state) {
+    $scope.format = 'dd/MM/yyyy';
+    $scope.model = {
+      date: $filter('date')(new Date, 'dd/MM/yyyy'),
+    };
+  
+    $scope.open = function ($event) {
+      $event.preventDefault();
+      $event.stopPropagation();
+  
+      $scope.opened = true;
+    };
+  
+    $scope.submitEvent = function ($event) {
+      $http.post('/api/events', $scope.model).success(function(data) {
+        $state.go('events');
+      });
+    };
+  };
+  angular.module('tviundApp')
+    .controller('EventsCreateCtrl', eventCreateCtrl);
 })();
