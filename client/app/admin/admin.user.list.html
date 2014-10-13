@@ -1,9 +1,12 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="container">
-	<div class="row">
-		<div class="list-group">
-			<a class="list-group-item" href="#" ng-repeat="user in users"> {{ user.name }}</a>
-		</div>
-	</div>
+    <div class="row">
+        <div class="list-group">
+            <li class="list-group-item" ng-repeat='user in users'>
+                {{ user.name }}
+                <a ng-click='blackList(user)' class="pull-right" ng-hide='user.onBlackList'>Blacklist</a>
+            </li>
+        </div>
+    </div>
 </div>
