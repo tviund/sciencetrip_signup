@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('tviundApp')
-  .controller('EventsCreateCtrl', function ($scope, $http, $filter, $location) {
+  .controller('EventsCreateCtrl', function ($scope, $http, $filter, $state) {
     
     $scope.format = 'dd/MM/yyyy';
     $scope.model = {
@@ -17,7 +17,7 @@ angular.module('tviundApp')
 
     $scope.submitEvent = function ($event) {
       $http.post('/api/events', $scope.model).success(function(data) {
-        $location.path('/events').replace();
+        $state.go('events');
       });
     };
   });
