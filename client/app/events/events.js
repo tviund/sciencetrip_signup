@@ -1,5 +1,6 @@
+'use strict';
+
 (function () {
-	'use strict';
 	function eventsConfig($stateProvider) {
 		$stateProvider
 			.state('events', {
@@ -12,7 +13,9 @@
 				url: '/events/create',
 				templateUrl: 'app/events/events.create.html',
 				controller: 'EventsCreateCtrl',
-				controllerAs: 'vm'
+				controllerAs: 'vm',
+                               requireLogin: true
+
 			})
 			.state('edit', {
 				url: '/events/edit/:id',

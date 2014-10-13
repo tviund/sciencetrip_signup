@@ -36,9 +36,13 @@
 		};
 	}
 
-	function appRun($rootScope, $location, Auth) {
+	function appRun($rootScope, $location, Auth, $state) {
 		// Redirect to login if route requires auth and you're not logged in
-		$rootScope.$on('$stateChangeStart', function (event, next) {
+		$rootScope.$on('$stateChangeStart', function(event, toState, next) {
+            if (toState.requireLogin) { 
+                $state.transitionTo("login");
+                event.preventDefault();
+            }
 			Auth.isLoggedInAsync(function (loggedIn) {
 				if (next.authenticate && !loggedIn) {
 					$location.path('/login');
