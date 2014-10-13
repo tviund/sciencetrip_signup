@@ -1,6 +1,9 @@
-'use strict';
+(function () {
+	'use strict';
 
-angular.module('tviundApp')
-    .controller('AdminCtrl', function ($scope, $http, Auth, User) {
-    
-    });
+	function adminCtrl() {
+	}
+
+	angular.module('tviundApp')
+		.controller('AdminCtrl', adminCtrl)
+})();

@@ -1,4 +1,4 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
+<navbar/>
 
 <div class="container">
   <h2>Félög</h2>
@@ -6,7 +6,7 @@
   <div class="row">
     <div class="col-xs-4">
       <div class="list-group">
-        <a class="list-group-item" ng-repeat="org in orgs" href="/admin/org/{{ org._id }}">{{org.name}}</a>
+        <a class="list-group-item" ng-repeat="org in orgs" href="/admin/org/{{ org._id }}/groups">{{org.name}}</a>
         <a class="list-group-item" ng-hide="addOrg" ng-click="addOrg =! addOrg">Bæta við <i class="fa fa-plus"></i></a>
           <span class="list-group-item" ng-show="addOrg">
             <div class="input-group">

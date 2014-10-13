@@ -7,5 +7,5 @@ module.exports = {
     mongo: {
         uri: 'mongodb://localhost/tviund-dev'
     },
-    seedDB: true
+    seedDB: false
 };

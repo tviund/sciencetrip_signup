@@ -1,3 +1,4 @@
+/*
 'use strict';
 
 describe('Controller: AdminOrgCreateCtrl', function () {
@@ -9,3 +10,4 @@ describe('Controller: AdminOrgCreateCtrl', function () {
     expect(1).toEqual(1);
   });
 });
+*/
