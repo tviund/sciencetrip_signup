@@ -25,8 +25,8 @@
 				controller: 'EventsDetailsCtrl',
 				controllerAs: 'vm'
 			})
-	}
+	};
 
 	angular.module('tviundApp')
-		.config(eventsConfig)
+		.config(eventsConfig);
 })();
